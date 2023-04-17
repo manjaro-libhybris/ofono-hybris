@@ -1,17 +1,20 @@
-#Maintainer Erik Inkinen <erik.inkinen@gmail.com>
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
+
 pkgname=ofono-hybris
 provides=('ofono')
 conflicts=('ofono')
 _pkgbase=ofono
-pkgver=9902.09074dc0
-pkgrel=1
+pkgver=10097.3afa0876
+pkgrel=2
 arch=('armv7h' 'aarch64' 'x86' 'x86_64')
 url="https://github.com/sailfishos/ofono"
 license=('GPL2')
 depends=('libglibutil' 'dbus' 'systemd')
 makedepends=('git' 'pkgconfig' 'libwspcodec' 'automake' 'autoconf' 'dbus-glib' 'mobile-broadband-provider-info')
-source=("ofono::git+https://github.com/sailfishos/ofono.git")
-md5sums=('SKIP')
+source=("ofono::git+https://github.com/sailfishos/ofono.git"
+	"ril_subscription.conf")
+md5sums=('SKIP'
+	 'SKIP')
 options=(debug !strip)
 
 pkgver() {
@@ -39,5 +42,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgbase}/ofono"
   make DESTDIR="$pkgdir" install
-}
 
+  install -Dm644 "${srcdir}/ril_subscription.conf" "${pkgdir}/etc/ofono/ril_subscription.conf"
+}
