@@ -1,11 +1,11 @@
 # Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=ofono-hybris
-provides=('ofono')
+provides=('ofono=1.29')
 conflicts=('ofono')
 _pkgbase=ofono
 pkgver=10097.3afa0876
-pkgrel=2
+pkgrel=3
 arch=('armv7h' 'aarch64' 'x86' 'x86_64')
 url="https://github.com/sailfishos/ofono"
 license=('GPL2')
